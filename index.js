@@ -1,6 +1,6 @@
 const {createStore} = require('redux')
 
-//state -> action -> reducer -> store
+//state -> action -> reducer -> store -> {getstate(), dispatch(), subscribe()}
 
 //const type 
 const INCREMENT = 'INCREMENT'
