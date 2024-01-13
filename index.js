@@ -1,4 +1,6 @@
-//state -> action -> reducer
+const {createStore} = require('redux')
+
+//state -> action -> reducer -> store
 
 //const type 
 const INCREMENT = 'INCREMENT'
@@ -50,3 +52,16 @@ const counterReducer = (state = initialCounterState, action) => {
         default: state
     }
 }
+
+//Create store
+const store = createStore(counterReducer)
+
+store.subscribe(()=> {
+    console.log(store.getState())
+})
+
+store.dispatch(incrementCounter())
+store.dispatch(incrementCounter())
+store.dispatch(incrementCounter())
+store.dispatch(decrementCounter())
+store.dispatch(decrementCounter())
