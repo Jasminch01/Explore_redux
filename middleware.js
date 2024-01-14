@@ -1,37 +1,37 @@
-const { createStore, applyMiddleware } = require("redux")
-const { default: logger } = require("redux-logger")
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
 
-const ADDPRODUCT ='ADDPRODUCT'
+const ADDPRODUCT = "ADDPRODUCT";
 
 const initialState = {
-    product : [],
-    numberOfProduct : 0,
-}
+  product: [],
+  numberOfProduct: 0,
+};
 
 const addProduct = (product) => {
-    return {
-        type : ADDPRODUCT ,
-        payload : product
-    }
-}
+  return {
+    type: ADDPRODUCT,
+    payload: product,
+  };
+};
 
 const productReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ADDPRODUCT:
-            return {
-                product : [...state.product, action.payload],
-                numberOfProduct : state.numberOfProduct + 1
-            }
-    
-        default:
-            return state
-    }
-}
+  switch (action.type) {
+    case ADDPRODUCT:
+      return {
+        product: [...state.product, action.payload],
+        numberOfProduct: state.numberOfProduct + 1,
+      };
 
-const store = createStore(productReducer, applyMiddleware(logger))
+    default:
+      return state;
+  }
+};
 
-store.subscribe(()=> {
-    console.log(store.getState())
-})
+const store = createStore(productReducer, applyMiddleware(logger));
 
-store.dispatch(addProduct('pen'))
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch(addProduct("pen"));
